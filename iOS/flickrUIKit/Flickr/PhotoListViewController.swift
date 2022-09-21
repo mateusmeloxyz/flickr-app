@@ -1,9 +1,17 @@
 import Foundation
 import UIKit
 
+class ResultsViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .red
+    }
+}
+
 class PhotoListViewController: UIViewController, UISearchResultsUpdating {
     private let tableView = UITableView()
-    private let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: ResultsViewController())
     let apiClient: APIClient = APIClient()
     
     override func viewDidLoad() {
@@ -23,5 +31,14 @@ class PhotoListViewController: UIViewController, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         // TODO update tableview with photos from using the APIClient to fetch `PhotoList`
+        //apiClient.fetch(query: "cat")
+        // print(searchController.searchBar.text!)
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+//        let vc = searchController.searchResultsController as? resultsVC
+//        vc?.view.backgroundColor = .yellow
+        
+        print(text)
     }
 }

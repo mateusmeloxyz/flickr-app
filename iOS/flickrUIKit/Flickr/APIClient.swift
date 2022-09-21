@@ -28,5 +28,25 @@ class APIClient {
         }
         
         // TODO
+        
+        let postUrl = URL(string: "https://jsonplaceholder.typicode.com/posts");
+        let session = URLSession.shared.dataTask(with: postUrl!){
+            (data, response, error) in
+            
+            print("response: \(String(describing: response))")
+            print("response: \(String(describing: error))")
+        }
+        
+        session.resume()
+        
+//        (session.dataTaskWithURL(NSURL(string :url)!,
+//            completionHandler: {
+//            (data :NSData!, response, error) -> Void in
+//
+//            let result = NSString(data: data, encoding: NSUTF8StringEncoding)
+//
+//            println(result!)
+//
+//        })).resume()
     }
 }
